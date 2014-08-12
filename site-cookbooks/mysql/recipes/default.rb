@@ -12,6 +12,7 @@ end
 
 service "mysqld" do
   action [ :enable, :start]
+  supports :status => true, :restart => true, :reload => true
 end
 
 template "my.cnf" do

@@ -12,6 +12,7 @@ end
 
 service "httpd" do
   action [ :enable, :start]
+  supports :status => true, :restart => true, :reload => true
 end
 
 template "httpd.conf" do
