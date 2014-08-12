@@ -18,6 +18,7 @@ Usage
  $ bundle install
  $ vagrant plugin install dotenv
  $ vagrant plugin install sahara
+ $ vagrant plugin install vagrant-omnibus
 ```
 
 Tips
