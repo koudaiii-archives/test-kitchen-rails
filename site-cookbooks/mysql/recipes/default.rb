@@ -13,3 +13,11 @@ end
 service "mysqld" do
   action [ :enable, :start]
 end
+
+template "my.cnf" do
+  path "/etc/my.cnf"
+  owner "root"
+  group "root"
+  mode 0644
+  notifies :reload, 'service[mysqld]'
+end
