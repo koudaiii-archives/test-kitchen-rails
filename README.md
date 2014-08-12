@@ -19,15 +19,18 @@ Usage
  $ vagrant plugin install dotenv
  $ vagrant plugin install sahara
  $ vagrant plugin install vagrant-omnibus
+ $ vagrant ssh-config --host webapp >> ~/.ssh/config
 ```
 
 ```
  # Start provisioning, after install Chef
- $ knife solo bootstrap [IP or hostname]
- # Not Start provisioning
- $ knife solo prepare [IP or hostname]
+ $ knife solo bootstrap webapp|| [IP ||  hostname]
 ```
 
+* Local Host IP Address 192.168.33.10
+* Server(Before SSH login on the local server and can sudo)
+* DigitalOcen
+* AWS EC2
 
 Tips
 ------
@@ -36,13 +39,17 @@ Tips
 
 ```
  $ vagrant sandbox on
- $ vagrant sandbox reload
+ $ vagrant sandbox rollback
  $ vagrant sandbox off
 ```
 
-## Use Chef-repo
+## Use Chef
 
 ```
+ # Install Chef
+ $ knife solo prepare vagrant@webapp
+ # provisionning cookbook
+ $ bundle exec knife solo cook webapp
  # Start provisioning, after install Chef
  $ knife solo bootstrap [IP or hostname]
  # Not Start provisioning
