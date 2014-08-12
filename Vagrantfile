@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box"
 
   # Use vagrant-omnibus
-  config.omnibus.chef_version = :latest
+  # config.omnibus.chef_version = :latest
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

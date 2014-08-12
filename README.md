@@ -21,6 +21,14 @@ Usage
  $ vagrant plugin install vagrant-omnibus
 ```
 
+```
+ # Start provisioning, after install Chef
+ $ knife solo bootstrap [IP or hostname]
+ # Not Start provisioning
+ $ knife solo prepare [IP or hostname]
+```
+
+
 Tips
 ------
 
