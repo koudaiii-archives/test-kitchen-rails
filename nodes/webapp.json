@@ -1,5 +1,6 @@
 {
   "run_list": [
+    "recipe[login_users]",
     "recipe[dstat]",
     "recipe[apache]",
     "recipe[mysql]"
