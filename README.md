@@ -16,6 +16,7 @@ Usage
 ```
  $ git clone https://github.com/koudaiii/test-kitchen-rails.git
  $ bundle install
+ $ bundle exec berks
  $ vagrant plugin install dotenv
  $ vagrant plugin install sahara
  $ vagrant plugin install vagrant-omnibus
