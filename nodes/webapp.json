@@ -3,8 +3,8 @@
     "recipe[login_users]",
     "recipe[yum-epel]",
     "recipe[dstat]",
-    "recipe[apache]",
-    "recipe[mysql]"
+    "role[web]",
+    "role[db]"
   ],
   "automatic": {
     "ipaddress": "webapp"
