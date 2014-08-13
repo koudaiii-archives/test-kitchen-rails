@@ -36,10 +36,11 @@ template "#{node['nginx']['dir']}/sites-available/default" do
 end
 
 ## TODO site-enabled symboliclink
-#nginx_site 'default' do
-#  enable node['nginx']['default_site_enabled']
-#   not_if do
-#     ::File.symlink?("#{node['nginx']['dir']}/sites-enabled/#{params[:name]}") ||
-#     ::File.symlink?("#{node['nginx']['dir']}/sites-enabled/000-#{params[:name]}")
-#   end
-# end
+link "#{node['nginx']['dir']}/sites-enabled/default" do
+  not_if do
+    ::File.symlink?("#{node['nginx']['dir']}/sites-enabled/default") ||
+    ::File.symlink?("#{node['nginx']['dir']}/sites-enabled/app")
+  end
+  to "#{node['nginx']['dir']}/sites-available/default"
+  notifies :reload, 'service[nginx]'
+end
