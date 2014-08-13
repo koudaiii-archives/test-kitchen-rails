@@ -56,3 +56,13 @@ Tips
  $ knife solo prepare [IP or hostname]
 ```
 
+FAQ
+------
+
+### ERROR: Your private key could not be loaded from /etc/chef/client.pem
+
+add -z option
+
+```
+ $ bundle exec knife cookbook site show apache -z
+```
