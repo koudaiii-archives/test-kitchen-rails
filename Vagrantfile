@@ -23,7 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     provider.size = '512mb'
 
     if ENV['WERCKER'] == "true"
-      provider.ssh_key_name = "wercker"
+      provider.ssh_key_name = "wercker chef"
     else
       provider.ssh_key_name = "My MacBook Air"
     end
