@@ -13,6 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.33.10"
 
   config.vm.provider :digital_ocean do |provider, override|
+    override.ssh.username = "vagrant"
     override.ssh.private_key_path = "~/.ssh/id_rsa"
     override.vm.box = 'digital_ocean'
     override.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
@@ -29,8 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
   # use vagrant-omnibus
-  #   provider.omnibus.chef_version = :latest
-
+    override.omnibus.chef_version = :latest
   end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
