@@ -47,7 +47,7 @@ build:
         code: bundle exec berks vendor cookbooks
     - script:
         name: Run vagrant up
-        code: vagrant up --provider=digital_ocean
+        code: VAGRANT_LOG=DEBUG vagrant up --provider=digital_ocean
 #    - script:
 #        name: Run rake spec
 #        code: bundle exec rake spec
