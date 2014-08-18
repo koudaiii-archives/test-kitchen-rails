@@ -31,6 +31,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # use vagrant-omnibus
     override.omnibus.chef_version = :latest
+  #  override.vm.provision "chef_solo" do |chef|
+  #    chef.custom_config_path = "Vagrantfile.chef"
+  #    chef.cookbooks_path = ["cookbooks"]
+  #  end
   end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
