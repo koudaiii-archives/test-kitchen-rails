@@ -1,11 +1,11 @@
-nginx CHANGELOG
-===============
+my-nginx CHANGELOG
+==================
 
-This file is used to list changes made in each version of the nginx cookbook.
+This file is used to list changes made in each version of the my-nginx cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of nginx
+- [your_name] - Initial release of my-nginx
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
