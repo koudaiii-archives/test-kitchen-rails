@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-12.04
+  - name: centos-6.5
+
+suites:
+  - name: webapp
+    run_list:
+      - recipe[login_users]
+      - recipe[yum-epel]
+      - recipe[apt]
+      - recipe[dstat]
+      - recipe[my-nginx]
+      - recipe[mysql]
+    attributes:
+     nginx:
+      servername : "webapp"
