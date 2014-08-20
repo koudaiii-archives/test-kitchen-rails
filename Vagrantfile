@@ -31,6 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # use vagrant-omnibus
     override.omnibus.chef_version = :latest
+    override.berkshelf.enabled = true
   #  override.vm.provision "chef_solo" do |chef|
   #    chef.custom_config_path = "Vagrantfile.chef"
   #    chef.cookbooks_path = ["cookbooks"]
