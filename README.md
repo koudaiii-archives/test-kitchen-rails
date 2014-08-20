@@ -1,6 +1,7 @@
 test-kitchen-rails
 ==================
 
+[![wercker status](https://app.wercker.com/status/fea7be3fadc1bda1f651e9caa0550d5c/m "wercker status")](https://app.wercker.com/project/bykey/fea7be3fadc1bda1f651e9caa0550d5c)
 
 Overview
 ------
