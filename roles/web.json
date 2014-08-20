@@ -2,6 +2,13 @@
   "name" : "web",
   "chef_type" : "role",
   "json_class" : "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "my-nginx": {
+      "servername" : "webapp"
+    }
+  },
   "run_list" : [
     "recipe[my-nginx]"
   ]

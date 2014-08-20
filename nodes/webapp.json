@@ -1,12 +1,15 @@
 {
   "default_attributes": {
-    "nginx": {
+  },
+  "override_attributes": {
+    "my-nginx": {
       "servername" : "webapp"
       }
   },
   "run_list": [
     "recipe[login_users]",
     "recipe[yum-epel]",
+    "recipe[apt]",
     "recipe[dstat]",
     "role[web]",
     "role[db]"

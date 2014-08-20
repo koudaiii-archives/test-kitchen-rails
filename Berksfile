@@ -4,4 +4,5 @@ cookbook 'yum-epel'
 cookbook 'apt'
 cookbook 'mysql'
 cookbook 'nginx'
+cookbook 'login_users', path: "./site-cookbooks/login_users"
 cookbook 'my-nginx', path: "./site-cookbooks/my-nginx"

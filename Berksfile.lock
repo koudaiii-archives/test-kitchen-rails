@@ -1,5 +1,7 @@
 DEPENDENCIES
   apt
+  login_users
+    path: site-cookbooks/login_users
   my-nginx
     path: site-cookbooks/my-nginx
   mysql
@@ -11,7 +13,9 @@ GRAPH
   bluepill (2.3.1)
     rsyslog (>= 0.0.0)
   build-essential (2.0.6)
+  login_users (0.1.0)
   my-nginx (0.1.0)
+    nginx (>= 0.0.0)
   mysql (5.3.6)
     yum-mysql-community (>= 0.0.0)
   nginx (2.7.4)
