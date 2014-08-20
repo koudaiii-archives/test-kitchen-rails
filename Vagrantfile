@@ -31,11 +31,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # use vagrant-omnibus
     override.omnibus.chef_version = :latest
-    override.berkshelf.enabled = true
-  #  override.vm.provision "chef_solo" do |chef|
-  #    chef.custom_config_path = "Vagrantfile.chef"
-  #    chef.cookbooks_path = ["cookbooks"]
-  #  end
+    override.vm.provision "chef_solo" do |chef|
+      chef.custom_config_path = "Vagrantfile.chef"
+      chef.cookbooks_path = ["cookbooks"]
+      chef.roles_path = "./roles"
+      chef.data_bags_path = "./data_bags"
+      chef.node_name = "webapp"
+    end
   end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
