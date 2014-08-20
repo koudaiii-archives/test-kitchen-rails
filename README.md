@@ -21,6 +21,10 @@ Usage
  $ vagrant plugin install sahara
  $ vagrant plugin install vagrant-omnibus
  $ vagrant ssh-config --host webapp >> ~/.ssh/config
+ $ bundle exec kitchen create
+ $ bundle exec kitchen setup
+ $ bundle exec kitchen converge
+ $ bundle exec kitchen test
 ```
 
 ```
@@ -30,7 +34,7 @@ Usage
 
 * Local Host IP Address 192.168.33.10
 * Server(Before SSH login on the local server and can sudo)
-* DigitalOcen
+* DigitalOcen(Config Setting file .env)
 * AWS EC2
 
 Tips
