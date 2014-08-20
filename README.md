@@ -11,17 +11,12 @@ test-kichen-rails is install to nginx and puma and Ruby on Rails and MySQL.
 Description
 ------
 
-Usage
+Install
 ------
 
 ```
  $ git clone https://github.com/koudaiii/test-kitchen-rails.git
  $ bundle install
- $ bundle exec berks
- $ vagrant plugin install dotenv
- $ vagrant plugin install sahara
- $ vagrant plugin install vagrant-omnibus
- $ vagrant ssh-config --host webapp >> ~/.ssh/config
  $ bundle exec kitchen create
  $ bundle exec kitchen setup
  $ bundle exec kitchen converge
@@ -49,7 +44,7 @@ Tips
  $ vagrant sandbox off
 ```
 
-## Use Chef
+## Use Chef-solo
 
 ```
  # Install Chef
@@ -62,12 +57,30 @@ Tips
  $ knife solo prepare [IP or hostname]
 ```
 
+Contribution
+------
+
+```
+ $ git clone https://github.com/koudaiii/test-kitchen-rails.git
+ $ bundle install
+ $ bundle exec berks
+ $ bundle exec berks vendor cookbooks
+ $ vagrant plugin install dotenv
+ $ vagrant plugin install sahara
+ $ vagrant plugin install vagrant-omnibus
+ $ vagrant ssh-config --host webapp >> ~/.ssh/config
+ $ bundle exec kitchen create
+ $ bundle exec kitchen setup
+ $ bundle exec kitchen converge
+ $ bundle exec kitchen test
+```
+
 FAQ
 ------
 
 ### ERROR: Your private key could not be loaded from /etc/chef/client.pem
 
-add -z option
+* add -z option
 
 ```
  $ bundle exec knife cookbook site show apache -z
