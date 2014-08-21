@@ -37,6 +37,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.roles_path = "./roles"
       chef.data_bags_path = "./data_bags"
       chef.node_name = "webapp"
+      chef.run_list  = %w[
+        role[web]
+      ]
     end
   end
 
