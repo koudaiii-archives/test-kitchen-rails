@@ -17,5 +17,5 @@ gem 'kitchen-ec2'
 
 # Use serverspec
 gem 'serverspec'
-
+gem 'rake'
 # gem "rails"
