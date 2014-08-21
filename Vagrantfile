@@ -39,6 +39,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.node_name = "webapp"
       chef.run_list  = %w[
         role[web]
+        role[db]
       ]
     end
   end
