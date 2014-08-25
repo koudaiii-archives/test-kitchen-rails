@@ -13,4 +13,5 @@ suites:
   - name: default
     run_list:
       - role[web]
+      - role[db]
     attributes:

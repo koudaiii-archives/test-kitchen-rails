@@ -4,7 +4,7 @@ include Serverspec::Helper::Exec
 include Serverspec::Helper::DetectOS
 
 describe package('nginx') do
-  it { should be_installed.with_version("1.6.1")}
+  it { should be_installed.with_version("1.6")}
 end
 
 describe service('nginx') do
