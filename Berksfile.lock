@@ -2,6 +2,8 @@ DEPENDENCIES
   apt
   login_users
     path: site-cookbooks/login_users
+  my-mysql
+    path: site-cookbooks/my-mysql
   my-nginx
     path: site-cookbooks/my-nginx
   mysql
@@ -9,11 +11,13 @@ DEPENDENCIES
   yum-epel
 
 GRAPH
-  apt (2.5.2)
+  apt (2.5.3)
   bluepill (2.3.1)
     rsyslog (>= 0.0.0)
   build-essential (2.0.6)
   login_users (0.1.0)
+  my-mysql (0.1.0)
+    mysql (>= 0.0.0)
   my-nginx (0.1.0)
     nginx (>= 0.0.0)
   mysql (5.3.6)
@@ -31,7 +35,7 @@ GRAPH
     build-essential (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  yum (3.2.2)
+  yum (3.2.4)
   yum-epel (0.4.0)
     yum (~> 3.0)
   yum-mysql-community (0.1.10)
