@@ -6,3 +6,13 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+
+include_recipe 'mysql::server'
+include_recipe 'mysql::client'
+
+#template '/etc/mysql/conf.d/mysite.cnf' do
+#    owner 'mysql'
+#    owner 'mysql'
+#    source 'mysite.cnf.erb'
+#    notifies :restart, 'mysql_service[default]'
+#end
