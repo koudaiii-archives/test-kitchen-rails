@@ -37,6 +37,9 @@ build:
         name: Install Vagrant Plugin in vagrant-omnibus
         code: vagrant plugin install vagrant-omnibus
     - script:
+        name: Install Vagrant Plugin in vagrant-berkshelf
+        code: vagrant plugin install vagrant-berkshelf
+    - script:
         name: Install Vagrant Plugin in vagrant-digitalocean
         code: vagrant plugin install vagrant-digitalocean
     - script:

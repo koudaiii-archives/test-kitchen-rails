@@ -68,6 +68,7 @@ Contribution
  $ vagrant plugin install dotenv
  $ vagrant plugin install sahara
  $ vagrant plugin install vagrant-omnibus
+ $ vagrant plugin install vagrant-berkshelf
  $ vagrant ssh-config --host webapp >> ~/.ssh/config
  $ bundle exec kitchen create
  $ bundle exec kitchen setup
