@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe package('mysql-community-server') do
-  it { should be_installed.with_version("5.6") }
+describe package('mysql-server-5.5') do
+  it { should be_installed }
 end
 
-describe service('mysqld') do
+describe service('mysql') do
   it { should be_enabled   }
   it { should be_running   }
 end
