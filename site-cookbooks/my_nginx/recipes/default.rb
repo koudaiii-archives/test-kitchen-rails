@@ -28,4 +28,4 @@ template 'nginx.conf' do
 end
 
 include_recipe 'nginx::commons_dir'
-include_recipe 'my-nginx::sites'
+include_recipe 'my_nginx::sites'

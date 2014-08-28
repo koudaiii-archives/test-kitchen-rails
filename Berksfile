@@ -5,5 +5,5 @@ cookbook 'apt'
 cookbook 'mysql'
 cookbook 'nginx'
 cookbook 'login_users', path: "./site-cookbooks/login_users"
-cookbook 'my-nginx', path: "./site-cookbooks/my-nginx"
-cookbook 'my-mysql', path: "./site-cookbooks/my-mysql"
+cookbook 'my_nginx', path: "./site-cookbooks/my_nginx"
+cookbook 'my_mysql', path: "./site-cookbooks/my_mysql"

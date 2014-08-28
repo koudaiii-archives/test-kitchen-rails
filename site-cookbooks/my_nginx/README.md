@@ -1,4 +1,4 @@
-my-nginx Cookbook
+my_nginx Cookbook
 =================
 TODO: Enter the cookbook description here.
 
@@ -11,14 +11,14 @@ TODO: List your cookbook requirements. Be sure to include any requirements this 
 
 e.g.
 #### packages
-- `toaster` - my-nginx needs toaster to brown your bagel.
+- `toaster` - my_nginx needs toaster to brown your bagel.
 
 Attributes
 ----------
 TODO: List your cookbook attributes here.
 
 e.g.
-#### my-nginx::default
+#### my_nginx::default
 <table>
   <tr>
     <th>Key</th>
@@ -27,7 +27,7 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['my-nginx']['bacon']</tt></td>
+    <td><tt>['my_nginx']['bacon']</tt></td>
     <td>Boolean</td>
     <td>whether to include bacon</td>
     <td><tt>true</tt></td>
@@ -36,17 +36,17 @@ e.g.
 
 Usage
 -----
-#### my-nginx::default
+#### my_nginx::default
 TODO: Write usage instructions for each cookbook.
 
 e.g.
-Just include `my-nginx` in your node's `run_list`:
+Just include `my_nginx` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[my-nginx]"
+    "recipe[my_nginx]"
   ]
 }
 ```

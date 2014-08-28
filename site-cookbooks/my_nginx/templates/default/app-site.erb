@@ -1,0 +1,36 @@
+upstream <%= node['my_nginx']['app'] %> {
+  server unix:///var/www/<%= node['my_nginx']['app'] %>/shared/sockets/puma.sock fail_timeout=0;
+}
+
+server {
+#  listen 80;
+  server_name <%= node['my_nginx']['servername'] %>; # change to match your URL
+  root <%= node['my_nginx']['default_root'] %>/<%= node['my_nginx']['app'] %>/current/public;
+
+  access_log <%= node['nginx']['log_dir'] %>/<%= node['my_nginx']['app'] %>.access.log;
+  error_log <%= node['nginx']['log_dir'] %>/<%= node['my_nginx']['app'] %>.error.log info;
+
+  try_files $uri/index.html $uri @<%= node['my_nginx']['app'] %>;
+
+  location @<%= node['my_nginx']['app'] %> {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+
+    proxy_pass http://<%= node['my_nginx']['app'] %>;
+    }
+  location ~ ^/(assets)/  {
+    gzip_static on; # to serve pre-gzipped version
+    expires max;
+    add_header Cache-Control public;
+    }
+# auth_basic "Welcome to <%= node['my_nginx']['app'] %>";
+# auth_basic_user_file <%= node['my_nginx']['default_root'] %>/<%= node['my_nginx']['app'] %>/current/.htpasswd;
+
+
+  error_page 500 502 503 504 /500.html;
+  client_max_body_size 4G;
+  keepalive_timeout 10;
+
+}
+

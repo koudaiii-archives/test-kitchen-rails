@@ -10,6 +10,6 @@
     }
   },
   "run_list" : [
-    "recipe[my-nginx]"
+    "recipe[my_nginx]"
   ]
 }
