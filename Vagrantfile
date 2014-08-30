@@ -29,11 +29,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     if ENV['WERCKER'] == "true"
       provider.ssh_key_name = "wercker chef"
     else
-      provider.ssh_key_name = "Vagrant"
+      provider.ssh_key_name = "My MacBook Air"
     end
 
   # use vagrant-omnibus
     override.omnibus.chef_version = :latest
+  # disable vagrant-berkshelf
     override.berkshelf.enabled = false
     override.vm.provision "chef_solo" do |chef|
       chef.custom_config_path = "Vagrantfile.chef"
@@ -42,24 +43,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.data_bags_path = "./data_bags"
       chef.node_name = "webapp"
       chef.run_list  = %w[
+        role[base]
         role[web]
         role[db]
+        role[app]
       ]
     end
   end
-
-  # Enable provisioning with chef solo, specifying a cookbooks path, roles
-  # path, and data_bags path (all relative to this Vagrantfile), and adding
-  # some recipes and/or roles.
-  #
-  # config.vm.provision "chef_solo" do |chef|
-  #   chef.cookbooks_path = "../my-recipes/cookbooks"
-  #   chef.roles_path = "../my-recipes/roles"
-  #   chef.data_bags_path = "../my-recipes/data_bags"
-  #   chef.add_recipe "mysql"
-  #   chef.add_role "web"
-  #
-  #   # You may also specify custom JSON attributes:
-  #   chef.json = { :mysql_password => "foo" }
-  # end
 end

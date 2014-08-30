@@ -5,4 +5,48 @@
 # Copyright 2014, YOUR_COMPANY_NAME
 #
 # All rights reserved - Do Not Redistribute
-#
+
+%w{git openssl-devel sqlite-devel}.each do |pkg|
+  package pkg do
+    action :install
+  end
+end
+
+#TODO
+#directory "/usr/local/rbenv" do
+#  owner node["my_rbenv"]["user"]
+#  group node["my_rbenv"]["group"]
+#  mode 0755
+#  action :create
+#end
+
+git "/usr/local/rbenv" do
+  repository node["my_rbenv"]["my_rbenv_url"]
+  action :sync
+#  user node["my_rbenv"]["user"]
+#  group node["my_rbenv"]["group"]
+end
+
+#TODO
+directory "/usr/local/rbenv/plugins" do
+  owner node["my_rbenv"]["user"]
+  group node["my_rbenv"]["group"]
+  mode 0755
+  action :create
+end
+
+git "/usr/local/rbenv/plugins/ruby-build" do
+  repository node["my_rbenv"]["my_rbenv_url"]
+  action :sync
+  user node["my_rbenv"]["user"]
+  group node["my_rbenv"]["group"]
+end
+
+template "rbenv.sh" do
+  source "rbenv.sh.erb"
+  path "/etc/profile.d/.rbenv.sh"
+  mode 755
+  owner node["my_rbenv"]["user"]
+  group node["my_rbenv"]["group"]
+  not_if "grep rbenv /etc/profile.d/rbenv.sh"
+end

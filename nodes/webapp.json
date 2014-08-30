@@ -1,11 +1,9 @@
 {
   "run_list": [
-    "recipe[login_users]",
-    "recipe[yum-epel]",
-    "recipe[apt]",
-    "recipe[dstat]",
+    "role[base]",
     "role[web]",
-    "role[db]"
+    "role[db]",
+    "role[app]"
   ],
   "automatic": {
     "ipaddress": "webapp"
