@@ -44,9 +44,9 @@ end
 
 template "rbenv.sh" do
   source "rbenv.sh.erb"
-  path "/etc/profile.d/.rbenv.sh"
-  mode 755
-  owner node["my_rbenv"]["user"]
-  group node["my_rbenv"]["group"]
+  path "/etc/profile.d/rbenv.sh"
+  mode 0644
+  owner "root"
+  group "root"
   not_if "grep rbenv /etc/profile.d/rbenv.sh"
 end
