@@ -29,17 +29,17 @@ end
 
 #TODO
 directory "/usr/local/rbenv/plugins" do
-  owner node["my_rbenv"]["user"]
-  group node["my_rbenv"]["group"]
-  mode 0755
+  owner "root"
+  group "root"
+  mode 0777
   action :create
 end
 
 git "/usr/local/rbenv/plugins/ruby-build" do
   repository node["my_rbenv"]["my_rbenv_url"]
   action :sync
-  user node["my_rbenv"]["user"]
-  group node["my_rbenv"]["group"]
+  user "root"
+  group "root"
 end
 
 template "rbenv.sh" do

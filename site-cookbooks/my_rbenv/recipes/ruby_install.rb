@@ -1,8 +1,8 @@
 execute "rbenv install #{node['my_rbenv']['version']}" do
-  command "/usr/local/rbenv/bin/rbenv install #{node['my_rbenv']['vesion']}"
+  command "/usr/local/rbenv/bin/rbenv install #{node['my_rbenv']['version']}"
   user node['my_rbenv']['user']
   group node['my_rbenv']['group']
-  not_if { File.exsits?("/use/local/rbenv/versions/#{node['my_rbenv']['version']}")}
+  not_if { File.exists?("/use/local/rbenv/versions/#{node['my_rbenv']['version']}")}
 end
 
 execute "rbenv global #{node['my_rbenv']['version']}" do
