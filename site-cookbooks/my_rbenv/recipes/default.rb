@@ -50,3 +50,5 @@ template "rbenv.sh" do
   group "root"
   not_if "grep rbenv /etc/profile.d/rbenv.sh"
 end
+
+include_recipe 'my_rbenv::ruby_install'
