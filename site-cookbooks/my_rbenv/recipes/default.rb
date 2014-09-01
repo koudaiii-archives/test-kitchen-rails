@@ -28,15 +28,17 @@ git "/usr/local/rbenv" do
 end
 
 #TODO
-directory "/usr/local/rbenv/plugins" do
-  owner "root"
-  group "root"
-  mode 0777
-  action :create
+%w{plugins shims versions}.each do |dir|
+  directory "/usr/local/rbenv/#{dir}" do
+    owner "root"
+    group "root"
+    mode 0777
+    action :create
+  end
 end
 
 git "/usr/local/rbenv/plugins/ruby-build" do
-  repository node["my_rbenv"]["my_rbenv_url"]
+  repository node["my_rbenv"]["ruby-build_url"]
   action :sync
   user "root"
   group "root"
