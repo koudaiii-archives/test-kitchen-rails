@@ -12,6 +12,59 @@
   end
 end
 
+case node[:platform]
+when "ubuntu", "debian"
+  include_recipe "apt"
+end
+
+package "curl"
+package "curl-devel"
+
+case node[:platform]
+when "redhat", "centos", "amazon", "oracle"
+  package "gcc"
+  package "make"
+  package "zlib"
+  package "openssl"
+  package "openssl-devel"
+  package "zlib-devel"
+  package "readline"
+  package "readline-devel"
+  package "libxml2-devel"
+  package "libxslt-devel"
+  package "gcc-c++"
+  package "ImageMagick"
+  package "ImageMagick-devel"
+  package "mysql-devel"
+  package "bzip2"
+  package "libxml2"
+  package "libxslt"
+when "ubuntu", "debian"
+  package "aptitude"
+  package "libssl1.0.0"
+  package "libc6-dev"
+  package "automake"
+  package "libtool"
+  package 'libyaml-dev'
+  package 'zlib1g'
+  package 'zlib1g-dev'
+  package "openssl"
+  package 'libssl-dev'
+  package "libreadline-dev"
+  package "libxml2-dev"
+  package "libxslt1-dev"
+  package "ncurses-dev"
+  package "pkg-config"
+  package "build-essential"
+  package "imagemagick"
+  package "libmysqlclient"
+  package "bzip2"
+  package "zlib-devel"
+  package "libxslt-dev"
+  package "libxml2-dev"
+  package "libqtwebkit-dev"
+end
+
 #TODO
 #directory "/usr/local/rbenv" do
 #  owner node["my_rbenv"]["user"]
