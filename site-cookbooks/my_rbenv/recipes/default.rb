@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 
-%w{git sqlite-devel}.each do |pkg|
+%w{git curl curl-devel}.each do |pkg|
   package pkg do
     action :install
   end
@@ -17,11 +17,9 @@ when "ubuntu", "debian"
   include_recipe "apt"
 end
 
-package "curl"
-package "curl-devel"
-
 case node[:platform]
 when "redhat", "centos", "amazon", "oracle"
+  package "sqlite-devel"
   package "gcc"
   package "make"
   package "zlib"
