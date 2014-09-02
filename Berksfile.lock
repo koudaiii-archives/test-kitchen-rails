@@ -6,6 +6,8 @@ DEPENDENCIES
     path: site-cookbooks/my_mysql
   my_nginx
     path: site-cookbooks/my_nginx
+  my_postfix
+    path: site-cookbooks/my_postfix
   my_rbenv
     path: site-cookbooks/my_rbenv
   mysql
@@ -22,6 +24,8 @@ GRAPH
     mysql (>= 0.0.0)
   my_nginx (0.1.0)
     nginx (>= 0.0.0)
+  my_postfix (0.1.0)
+    postfix (>= 0.0.0)
   my_rbenv (0.1.0)
   mysql (5.4.4)
     yum-mysql-community (>= 0.0.0)
@@ -33,6 +37,7 @@ GRAPH
     runit (~> 1.2)
     yum-epel (~> 0.3)
   ohai (2.0.1)
+  postfix (3.5.0)
   rsyslog (1.12.2)
   runit (1.5.10)
     build-essential (>= 0.0.0)
