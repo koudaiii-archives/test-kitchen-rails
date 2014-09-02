@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 
-%w{git curl curl-devel}.each do |pkg|
+%w{git curl}.each do |pkg|
   package pkg do
     action :install
   end
@@ -19,6 +19,7 @@ end
 
 case node[:platform]
 when "redhat", "centos", "amazon", "oracle"
+  package "curl-devel"
   package "sqlite-devel"
   package "gcc"
   package "make"
