@@ -45,6 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.run_list  = %w[
         recipe[login_users]
         recipe[apt]
+        recipe[my_postfix]
         role[web]
         role[db]
         role[app]
