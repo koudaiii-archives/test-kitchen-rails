@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 
-%w{git openssl-devel sqlite-devel}.each do |pkg|
+%w{git sqlite-devel}.each do |pkg|
   package pkg do
     action :install
   end
