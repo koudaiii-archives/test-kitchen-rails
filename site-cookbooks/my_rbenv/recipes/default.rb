@@ -61,7 +61,6 @@ when "ubuntu", "debian"
 #  package "zlib-devel"
   package "libxslt-dev"
   package "libxml2-dev"
-  package "libqtwebkit-dev"
 end
 
 #TODO

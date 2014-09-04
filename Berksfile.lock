@@ -8,6 +8,8 @@ DEPENDENCIES
     path: site-cookbooks/my_nginx
   my_postfix
     path: site-cookbooks/my_postfix
+  my_qt
+    path: site-cookbooks/my_qt
   my_rbenv
     path: site-cookbooks/my_rbenv
   mysql
@@ -26,6 +28,7 @@ GRAPH
     nginx (>= 0.0.0)
   my_postfix (0.1.0)
     postfix (>= 0.0.0)
+  my_qt (0.1.0)
   my_rbenv (0.1.0)
   mysql (5.4.4)
     yum-mysql-community (>= 0.0.0)

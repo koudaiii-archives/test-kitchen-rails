@@ -3,6 +3,7 @@
   "chef_type" : "role",
   "json_class" : "Chef::Role",
   "run_list" : [
-    "recipe[my_rbenv]"
-  ]
+    "recipe[my_rbenv]",
+    "recipe[my_qt]"
+]
 }
