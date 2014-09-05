@@ -4,6 +4,7 @@
   "json_class" : "Chef::Role",
   "run_list" : [
     "recipe[my_rbenv]",
-    "recipe[my_qt]"
+    "recipe[my_qt]",
+    "recipe[my_ffmpeg]"
 ]
 }
