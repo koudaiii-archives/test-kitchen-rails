@@ -29,3 +29,9 @@ link "#{node['nginx']['dir']}/sites-enabled/app" do
   notifies :reload, 'service[nginx]'
 end
 
+directory "/var/www" do
+  owner 'root'
+  group 'root'
+  mode 0755
+  action :create
+end

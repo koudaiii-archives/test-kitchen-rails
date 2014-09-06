@@ -18,4 +18,8 @@ gem 'kitchen-ec2'
 # Use serverspec
 gem 'serverspec'
 gem 'rake'
+
+# Use Application Deploy
+gem 'capistrano'
+
 # gem "rails"
