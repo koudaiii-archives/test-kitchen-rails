@@ -21,5 +21,8 @@ gem 'rake'
 
 # Use Application Deploy
 gem 'capistrano'
+gem 'capistrano-rbenv'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
 
 # gem "rails"
