@@ -1,1 +1,1 @@
-node['ffmpeg']['install_method'] = ':package'
+default['ffmpeg']['install_method'] = ':package'
