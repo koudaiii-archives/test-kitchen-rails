@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: my_qt
+# Cookbook Name:: my_ffmpeg
 # Recipe:: default
 #
 # Copyright 2014, YOUR_COMPANY_NAME
@@ -9,7 +9,19 @@
 
 case node[:platform]
 when "ubuntu", "debian"
- include_recipe 'ffmpeg'
+  #if node['lsb']['codename'] = "trusty"
+  #  template "ffmpeg.list" do
+  #    source "ffmpeg.list.erb"
+  #    path   "/etc/apt/sources.list.d/ffmpeg.list"
+  #  end
+  #  execute "apt-get update"
+  #  %w{libavutil52 libavcodec54 libavformat54 libavresample1 libpostproc52 libswresample0 libswscale2 libavfilter3 libavdevice53 ffmpeg}.each do |pkg|
+  #    package pkg
+  #  end
+  #else
+  #  package "ffmpeg"
+  #end
+  include_recipe 'ffmpeg'
 end
 
 case node[:platform]
