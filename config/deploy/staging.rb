@@ -4,6 +4,22 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
+config = `vagrant ssh-config default`
+if config != ''
+  config.each_line do |line|
+    if match = /HostName (.*)/.match(line)
+      host = match[1]
+    elsif  match = /User (.*)/.match(line)
+      user = match[1]
+    elsif match = /IdentityFile (.*)/.match(line)
+      keys =  [match[1].gsub(/"/,'')]
+    elsif match = /Port (.*)/.match(line)
+      port = match[1]
+    end
+  end
+end
+
+
 role :app, %w{deploy@example.com}
 role :web, %w{deploy@example.com}
 role :db,  %w{deploy@example.com}
