@@ -3,12 +3,16 @@ DEPENDENCIES
   ffmpeg
   login_users
     path: site-cookbooks/login_users
+  my_cron
+    path: site-cookbooks/my_cron
   my_ffmpeg
     path: site-cookbooks/my_ffmpeg
   my_mysql
     path: site-cookbooks/my_mysql
   my_nginx
     path: site-cookbooks/my_nginx
+  my_ntp
+    path: site-cookbooks/my_ntp
   my_postfix
     path: site-cookbooks/my_postfix
   my_qt
@@ -44,12 +48,14 @@ GRAPH
     git (>= 0.0.0)
     yasm (>= 0.0.0)
   login_users (0.1.0)
+  my_cron (0.1.0)
   my_ffmpeg (0.1.0)
     ffmpeg (>= 0.0.0)
   my_mysql (0.1.0)
     mysql (>= 0.0.0)
   my_nginx (0.1.0)
     nginx (>= 0.0.0)
+  my_ntp (0.1.0)
   my_postfix (0.1.0)
     postfix (>= 0.0.0)
   my_qt (0.1.0)

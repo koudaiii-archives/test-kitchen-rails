@@ -6,6 +6,8 @@
     "recipe[login_users]",
     "recipe[yum-epel]",
     "recipe[apt]",
-    "recipe[dstat]"
+    "recipe[dstat]",
+    "recipe[my_ntp]",
+    "recipe[my_cron]"
   ]
 }
