@@ -9,9 +9,20 @@
 
 case node[:platform]
 when "ubuntu", "debian"
-  include_recipe 'ffmpeg'
+  if node['lsb']['codename'] == "trusty"
+    template "ffmpeg.list" do
+      source "ffmpeg.list.erb"
+      path   "/etc/apt/sources.list.d/ffmpeg.list"
+    end
+    execute "apt-get update"
+    package "ffmpeg" do
+      action :install
+      options "--force-yes"
+    end
+  else
+    include_recipe 'ffmpeg'
+  end
 end
-
 case node[:platform]
 when "redhat", "centos", "amazon", "oracle"
 
