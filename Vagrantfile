@@ -43,9 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.data_bags_path = "./data_bags"
       chef.node_name = "webapp"
       chef.run_list  = %w[
-        recipe[login_users]
-        recipe[apt]
-        recipe[my_postfix]
+        role[base]
         role[web]
         role[db]
         role[app]
