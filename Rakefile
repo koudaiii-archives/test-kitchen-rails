@@ -4,7 +4,7 @@ require 'rspec/core/rake_task'
 task :spec => "spec:all"
 
 namespace :spec do
-  roles = %w( web app db)
+  roles = %w( base web app db)
     task :all => roles
 
     roles.each do |role|

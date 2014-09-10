@@ -8,6 +8,7 @@
     "recipe[apt]",
     "recipe[dstat]",
     "recipe[my_ntp]",
-    "recipe[my_cron]"
+    "recipe[my_cron]",
+    "recipe[my_postfix]"
   ]
 }
