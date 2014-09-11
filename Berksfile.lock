@@ -21,6 +21,8 @@ DEPENDENCIES
     path: site-cookbooks/my_qt
   my_rbenv
     path: site-cookbooks/my_rbenv
+  my_repo
+    path: site-cookbooks/my_repo
   mysql
   nginx
   yum-epel
@@ -63,6 +65,9 @@ GRAPH
     postfix (>= 0.0.0)
   my_qt (0.1.0)
   my_rbenv (0.1.0)
+  my_repo (0.1.0)
+    apt (>= 0.0.0)
+    yum-epel (>= 0.0.0)
   mysql (5.4.4)
     yum-mysql-community (>= 0.0.0)
   nginx (2.7.4)
