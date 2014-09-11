@@ -3,12 +3,15 @@ DEPENDENCIES
   dstat
     path: site-cookbooks/dstat
   ffmpeg
+  locale
   login_users
     path: site-cookbooks/login_users
   my_cron
     path: site-cookbooks/my_cron
   my_ffmpeg
     path: site-cookbooks/my_ffmpeg
+  my_locale
+    path: site-cookbooks/my_locale
   my_mysql
     path: site-cookbooks/my_mysql
   my_nginx
@@ -52,10 +55,13 @@ GRAPH
     build-essential (>= 0.0.0)
     git (>= 0.0.0)
     yasm (>= 0.0.0)
+  locale (1.0.2)
   login_users (0.1.0)
   my_cron (0.1.0)
   my_ffmpeg (0.1.0)
     ffmpeg (>= 0.0.0)
+  my_locale (0.1.0)
+    locale (>= 0.0.0)
   my_mysql (0.1.0)
     mysql (>= 0.0.0)
   my_nginx (0.1.0)

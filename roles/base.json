@@ -5,6 +5,7 @@
   "run_list" : [
     "recipe[login_users]",
     "recipe[my_repo]",
+    "recipe[my_locale]",
     "recipe[dstat]",
     "recipe[my_ntp]",
     "recipe[my_cron]",
