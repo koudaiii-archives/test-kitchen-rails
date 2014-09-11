@@ -6,10 +6,12 @@ cookbook 'mysql'
 cookbook 'nginx'
 cookbook 'ffmpeg'
 cookbook 'locale'
+cookbook 'timezone-ii'
 cookbook 'login_users', path: "./site-cookbooks/login_users"
 cookbook 'dstat', path: "./site-cookbooks/dstat"
 cookbook 'my_repo', path: "./site-cookbooks/my_repo"
 cookbook 'my_locale', path: "./site-cookbooks/my_locale"
+cookbook 'my_tz', path: "./site-cookbooks/my_tz"
 cookbook 'my_nginx', path: "./site-cookbooks/my_nginx"
 cookbook 'my_mysql', path: "./site-cookbooks/my_mysql"
 cookbook "my_rbenv", path: "./site-cookbooks/my_rbenv"
