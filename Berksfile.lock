@@ -1,5 +1,7 @@
 DEPENDENCIES
   apt
+  dstat
+    path: site-cookbooks/dstat
   ffmpeg
   login_users
     path: site-cookbooks/login_users
@@ -30,6 +32,7 @@ GRAPH
   build-essential (2.0.6)
   chef_handler (1.1.6)
   dmg (2.2.0)
+  dstat (0.1.0)
   ffmpeg (0.4.3)
     build-essential (>= 0.0.0)
     git (>= 0.0.0)
