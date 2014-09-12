@@ -23,7 +23,7 @@ set :deploy_to, '/var/www/app'
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
@@ -40,17 +40,16 @@ namespace :deploy do
     desc '(overwrite) Check shared and release directories exist'
     task :directories do
       on release_roles :all do
-        execute :sudo, :mkdir, '-pv', shared_path, releases_path, "#{shared_path}/config"
+        execute :sudo, :mkdir, '-pv', shared_path, releases_path, "#{shared_path}/config", "#{shared_path}/uploads", "#{shared_path}/jmaxml"
         execute :sudo, :chown, '-R', "#{fetch(:user)}:#{fetch(:group)}", deploy_to
       end
     end
-
-    task :linked_files => 'config/database.yml'
   end
 
-  remote_file 'config/database.yml' => '/tmp/database.yml', roles: :app
-  file '/tmp/database.yml' do |t|
-    sh "curl -o #{t.name} https://github.com/koudaiii/twitter-bootswatch-rails-demo/blob/master/config/database.yml"
+  task :upload do
+    on roles(:app) do |host|
+      upload!('config/database.yml', "#{shared_path}/config/database.yml")
+    end
   end
 
   desc 'Restart application'
@@ -61,6 +60,7 @@ namespace :deploy do
     end
   end
 
+  before :starting, 'deploy:upload'
   after :publishing, :restart
 
   after :restart, :clear_cache do
