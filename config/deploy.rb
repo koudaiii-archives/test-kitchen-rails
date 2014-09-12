@@ -35,6 +35,23 @@ set :deploy_to, '/var/www/app'
 # set :keep_releases, 5
 
 namespace :deploy do
+  Rake::Task["deploy:check:directories"].clear
+  namespace :check do
+    desc '(overwrite) Check shared and release directories exist'
+    task :directories do
+      on release_roles :all do
+        execute :sudo, :mkdir, '-pv', shared_path, releases_path, "#{shared_path}/config"
+        execute :sudo, :chown, '-R', "#{fetch(:user)}:#{fetch(:group)}", deploy_to
+      end
+    end
+
+    task :linked_files => 'config/database.yml'
+  end
+
+  remote_file 'config/database.yml' => '/tmp/database.yml', roles: :app
+  file '/tmp/database.yml' do |t|
+    sh "curl -o #{t.name} https://github.com/koudaiii/twitter-bootswatch-rails-demo/blob/master/config/database.yml"
+  end
 
   desc 'Restart application'
   task :restart do

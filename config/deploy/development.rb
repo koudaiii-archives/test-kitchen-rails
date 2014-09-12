@@ -5,9 +5,10 @@
 # property set.  Don't declare `role :all`, it's a meta role.
 
 host = "192.168.33.10"
-user = ""
+user = "root"
 keys = ""
 port = "22"
+default_password = "vagrant"
 
 config = `vagrant ssh-config default`
 
@@ -18,15 +19,15 @@ if config != ''
         host = match[1]
       end
     elsif  match = /User (.*)/.match(line)
-      user = match[1]
+      if host == "127\.0\.0\.1"
+        user = match[1]
+      end
     elsif match = /IdentityFile (.*)/.match(line)
       keys =  [match[1].gsub(/"/,'')]
     elsif match = /Port (.*)/.match(line)
       if host == "127\.0\.0\.1"
         port = match[1]
       end
-    elsif match = /PasswordAuthentication (.*)/.match(line)
-      password = match[1]
     end
   end
 end
@@ -56,10 +57,10 @@ server "#{host}", user: "#{user}", roles: %w{web app db}, my_property: :my_value
 # --------------
   set :ssh_options, {
     keys: "#{keys}",
-    forward_agent: false,
+    forward_agent: true,
     port: "#{port}",
     auth_methods: %w(publickey password),
-    password: 'vagrant'
+    password: "#{default_password}"
   }
 
 #
