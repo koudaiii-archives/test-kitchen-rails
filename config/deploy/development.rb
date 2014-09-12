@@ -4,10 +4,10 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-host = "webapp"
+host = "192.168.33.10"
 user = ""
 keys = ""
-port = ""
+port = "22"
 
 config = `vagrant ssh-config default`
 
@@ -22,7 +22,9 @@ if config != ''
     elsif match = /IdentityFile (.*)/.match(line)
       keys =  [match[1].gsub(/"/,'')]
     elsif match = /Port (.*)/.match(line)
-      port = match[1]
+      if host == "127\.0\.0\.1"
+        port = match[1]
+      end
     elsif match = /PasswordAuthentication (.*)/.match(line)
       password = match[1]
     end
@@ -55,8 +57,9 @@ server "#{host}", user: "#{user}", roles: %w{web app db}, my_property: :my_value
   set :ssh_options, {
     keys: "#{keys}",
     forward_agent: false,
-    auth_methods: %w(password),
-    port: "#{port}"
+    port: "#{port}",
+    auth_methods: %w(publickey password),
+    password: 'vagrant'
   }
 
 #

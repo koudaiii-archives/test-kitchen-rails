@@ -23,7 +23,7 @@ require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 
 set :rbenv_custom_path, '/usr/local/rbenv'
-set :rbenv_ruby, '2.1.2p95'
+set :rbenv_ruby, '2.1.2'
 
 require 'capistrano/puma'
 require 'capistrano/puma/workers' #if you want to control the workers (in cluster mode)

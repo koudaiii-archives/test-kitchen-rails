@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'app'
-set :repo_url, 'git@github.com/koudaiii/twitter-bootswatch-rails-demo.git'
+set :repo_url, 'https://github.com/koudaiii/twitter-bootswatch-rails-demo.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
