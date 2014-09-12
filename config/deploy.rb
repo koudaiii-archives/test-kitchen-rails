@@ -26,7 +26,7 @@ set :deploy_to, '/var/www/app'
 set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system uploads jmaxml}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -40,7 +40,7 @@ namespace :deploy do
     desc '(overwrite) Check shared and release directories exist'
     task :directories do
       on release_roles :all do
-        execute :sudo, :mkdir, '-pv', shared_path, releases_path, "#{shared_path}/config", "#{shared_path}/uploads", "#{shared_path}/jmaxml"
+        execute :sudo, :mkdir, '-pv', shared_path, releases_path, "#{shared_path}/pids", "#{shared_path}/system", "#{shared_path}/cache", "#{shared_path}/sockets", "#{shared_path}/log", "#{shared_path}/config", "#{shared_path}/uploads", "#{shared_path}/jmaxml"
         execute :sudo, :chown, '-R', "#{fetch(:user)}:#{fetch(:group)}", deploy_to
       end
     end
@@ -73,7 +73,6 @@ namespace :deploy do
   end
 
   before :starting, 'deploy:upload'
-  before :migrate, 'deploy:db_create'
   after :publishing, :restart
 
   after :restart, :clear_cache do
