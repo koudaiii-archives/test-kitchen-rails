@@ -24,5 +24,5 @@ gem 'capistrano'
 gem 'capistrano-rbenv'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
-
+gem 'capistrano3-puma', github: "seuros/capistrano-puma"
 # gem "rails"

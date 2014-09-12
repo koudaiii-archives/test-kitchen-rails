@@ -4,25 +4,36 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
+host = "webapp"
+user = ""
+keys = ""
+port = ""
 
 config = `vagrant ssh-config default`
+
 if config != ''
   config.each_line do |line|
     if match = /HostName (.*)/.match(line)
-      host = match[1]
+      unless "127\.0\.0\.1" == match[1]
+        host = match[1]
+      end
     elsif  match = /User (.*)/.match(line)
       user = match[1]
     elsif match = /IdentityFile (.*)/.match(line)
       keys =  [match[1].gsub(/"/,'')]
     elsif match = /Port (.*)/.match(line)
       port = match[1]
+    elsif match = /PasswordAuthentication (.*)/.match(line)
+      password = match[1]
     end
   end
 end
 
-role :app, %w{deploy@example.com}
-role :web, %w{deploy@example.com}
-role :db,  %w{deploy@example.com}
+ssh_login = "#{user}"+ "@" + "#{host}"
+
+role :app, "#{ssh_login}"
+role :web, "#{ssh_login}"
+role :db,  "#{ssh_login}"
 
 
 # Extended Server Syntax
@@ -31,7 +42,7 @@ role :db,  %w{deploy@example.com}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server "#{host}", user: "#{user}", roles: %w{web app db}, my_property: :my_value
 
 
 # Custom SSH Options
@@ -41,16 +52,12 @@ server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#    port: 3456
-#  }
-
-
-
-
+  set :ssh_options, {
+    keys: "#{keys}",
+    forward_agent: false,
+    auth_methods: %w(password),
+    port: "#{port}"
+  }
 
 #
 # And/or per server (overrides global)
