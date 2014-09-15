@@ -2,5 +2,7 @@
   "id" : "koudaiii",
   "username" : "koudaiii",
   "home" : "/home/koudaiii",
-  "shell" : "/bin/bash"
+  "shell" : "/bin/bash",
+  "password": "$1$wfbXL8LR$dV9P4VPRR.U1WgWs0zz3L0",
+  "system": false
   }

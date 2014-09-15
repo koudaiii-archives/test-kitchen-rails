@@ -1,0 +1,8 @@
+{
+  "id" : "deploy",
+  "username" : "deploy",
+  "home" : "/home/deploy",
+  "shell" : "/bin/bash",
+  "password": "$1$wfbXL8LR$dV9P4VPRR.U1WgWs0zz3L0",
+  "system": true
+  }

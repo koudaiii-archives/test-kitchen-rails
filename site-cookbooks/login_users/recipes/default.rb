@@ -13,5 +13,7 @@ data_ids.each do |id|
   user u['username'] do
     home u['home']
     shell u['shell']
+    password u['password']
+    system u['system']
   end
 end

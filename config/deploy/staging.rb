@@ -3,6 +3,10 @@
 # Supports bulk-adding hosts to roles, the primary server in each group
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
+host = ""
+user = "vagrant"
+keys = ""
+port = ""
 
 config = `vagrant ssh-config default`
 if config != ''
@@ -10,7 +14,7 @@ if config != ''
     if match = /HostName (.*)/.match(line)
       host = match[1]
     elsif  match = /User (.*)/.match(line)
-      user = match[1]
+#      user = match[1]
     elsif match = /IdentityFile (.*)/.match(line)
       keys =  [match[1].gsub(/"/,'')]
     elsif match = /Port (.*)/.match(line)
@@ -19,10 +23,11 @@ if config != ''
   end
 end
 
+ssh_login = "#{user}"+ "@" + "#{host}"
 
-role :app, %w{deploy@example.com}
-role :web, %w{deploy@example.com}
-role :db,  %w{deploy@example.com}
+role :app, "#{ssh_login}"
+role :web, "#{ssh_login}"
+role :db,  "#{ssh_login}"
 
 
 # Extended Server Syntax
@@ -31,7 +36,7 @@ role :db,  %w{deploy@example.com}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server "#{host}", user: 'root', roles: %w{web app db}, my_property: :my_value
 
 
 # Custom SSH Options
@@ -41,11 +46,12 @@ server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
+  set :ssh_options, {
+    keys: "#{keys}",
+    #keys: %w(/home/rlisowski/.ssh/id_rsa),
+    forward_agent: false,
+    auth_methods: %w(password)
+  }
 #
 # And/or per server (overrides global)
 # ------------------------------------
