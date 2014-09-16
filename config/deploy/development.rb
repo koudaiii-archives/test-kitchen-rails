@@ -5,10 +5,10 @@
 # property set.  Don't declare `role :all`, it's a meta role.
 
 host = "192.168.33.10"
-user = "root"
+user = "deploy"
 keys = ""
 port = "22"
-default_password = "vagrant"
+default_password = "password"
 
 config = `vagrant ssh-config default`
 
@@ -55,13 +55,13 @@ server "#{host}", user: "#{user}", roles: %w{web app db}, my_property: :my_value
 #
 # Global options
 # --------------
-  set :ssh_options, {
-    keys: "#{keys}",
-    forward_agent: true,
-    port: "#{port}",
-    auth_methods: %w(publickey password),
-    password: "#{default_password}"
-  }
+#  set :ssh_options, {
+#    keys: "#{keys}",
+#    forward_agent: true,
+#    port: "#{port}",
+#    auth_methods: %w(publickey password),
+#    password: "#{default_password}"
+#  }
 
 #
 # And/or per server (overrides global)

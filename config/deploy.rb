@@ -11,16 +11,16 @@ set :repo_url, 'https://github.com/koudaiii/twitter-bootswatch-rails-demo.git'
 set :deploy_to, '/var/www/app'
 
 # Default value for :scm is :git
-# set :scm, :git
+set :scm, :git
 
 # Default value for :format is :pretty
 # set :format, :pretty
 
 # Default value for :log_level is :debug
-# set :log_level, :debug
+set :log_level, :debug
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml}
@@ -32,7 +32,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+set :keep_releases, 5
 
 namespace :deploy do
   Rake::Task["deploy:check:directories"].clear
@@ -40,9 +40,14 @@ namespace :deploy do
     desc '(overwrite) Check shared and release directories exist'
     task :directories do
       on release_roles :all do
-        execute :sudo, :mkdir, '-pv', shared_path, releases_path, "#{shared_path}/pids", "#{shared_path}/system", "#{shared_path}/cache", "#{shared_path}/sockets", "#{shared_path}/log", "#{shared_path}/config", "#{shared_path}/uploads", "#{shared_path}/jmaxml"
-        execute :sudo, :chown, '-R', "#{fetch(:user)}:#{fetch(:group)}", deploy_to
+        execute :sudo, :mkdir, '-pv', shared_path, releases_path, "#{shared_path}/config", "#{shared_path}/uploads", "#{shared_path}/jmaxml"
       end
+    end
+  end
+
+  task :fix_permissions do
+    on release_roles :all do
+      execute :sudo, :chown, '-R', "deploy:deploy", deploy_to
     end
   end
 
@@ -72,8 +77,10 @@ namespace :deploy do
     end
   end
 
+  before :starting, 'deploy:fix_permissions'
   before :starting, 'deploy:upload'
   after :publishing, :restart
+
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do

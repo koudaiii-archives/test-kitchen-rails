@@ -16,4 +16,22 @@ data_ids.each do |id|
     password u['password']
     system u['system']
   end
+
+  # .sshディレクトリを作ります
+  directory "#{u['home']}/.ssh" do
+    owner u['username']
+    group u['username']
+  end
+
+  # authorized_keysファイルを作ります
+  authorized_keys_file ="#{u['home']}/.ssh/authorized_keys"
+  #file authorized_keys_file do
+  cookbook_file authorized_keys_file do
+    owner u['username']
+    mode  0600
+    #content u['ssh_keys']
+    not_if { ::File.exists?("#{authorized_keys_file}")}
+  end
 end
+
+include_recipe 'sudo'

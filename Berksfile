@@ -7,6 +7,7 @@ cookbook 'nginx'
 cookbook 'ffmpeg'
 cookbook 'locale'
 cookbook 'timezone-ii'
+cookbook 'sudo', '~> 2.7.0'
 cookbook 'login_users', path: "./site-cookbooks/login_users"
 cookbook 'dstat', path: "./site-cookbooks/dstat"
 cookbook 'my_repo', path: "./site-cookbooks/my_repo"
