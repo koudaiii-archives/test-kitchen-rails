@@ -4,6 +4,8 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
+set :rails_env, 'production'
+
 host = "192.168.33.10"
 user = "deploy"
 keys = ""
@@ -47,6 +49,13 @@ role :db,  "#{ssh_login}"
 
 server "#{host}", user: "#{user}", roles: %w{web app db}, my_property: :my_value
 
+namespace :db do
+  task :db_create do
+    on roles(:db) do |host|
+      execute "mysql -uroot -ppassword -e 'CREATE DATABASE IF NOT EXISTS app_production;'"
+    end
+  end
+end
 
 # Custom SSH Options
 # ==================

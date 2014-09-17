@@ -1,5 +1,5 @@
 upstream <%= node['my_nginx']['app'] %> {
-  server unix:///var/www/<%= node['my_nginx']['app'] %>/shared/sockets/puma.sock fail_timeout=0;
+  server unix:///var/www/<%= node['my_nginx']['app'] %>/shared/tmp/sockets/puma.sock fail_timeout=0;
 }
 
 server {
