@@ -30,6 +30,15 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
+}
+
+set :assets_roles, [:web, :app]            # Defaults to [:web]
+#set :assets_prefix, 'prepackaged-assets'   # Defaults to 'assets' this should match config.assets.prefix in your rails config/application.rb
+
+#set :normalize_asset_timestamps, %{public/images public/javascripts public/stylesheets}
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
@@ -74,6 +83,8 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
+      invoke 'puma:stop'
+      invoke 'puma:start'
     end
   end
 
