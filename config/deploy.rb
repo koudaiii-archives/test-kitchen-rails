@@ -35,11 +35,6 @@ set :default_env, {
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
 }
 
-set :assets_roles, [:web, :app]            # Defaults to [:web]
-#set :assets_prefix, 'prepackaged-assets'   # Defaults to 'assets' this should match config.assets.prefix in your rails config/application.rb
-
-#set :normalize_asset_timestamps, %{public/images public/javascripts public/stylesheets}
-
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
@@ -67,22 +62,9 @@ namespace :deploy do
     end
   end
 
-#  desc 'Create Database'
-#  task :db_create do
-#    on roles(:db) do |host|
-#      with rails_env: fetch(:rails_env) do
-#        within current_path do
-#          execute :bundle, :exec, :rake, 'db:create'
-#        end
-#      end
-#    end
-#  end
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
       invoke 'puma:stop'
       invoke 'puma:start'
     end
