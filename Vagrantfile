@@ -32,10 +32,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       provider.ssh_key_name = "My MacBook Air"
     end
 
-  # use vagrant-omnibus
-    override.omnibus.chef_version = :latest
-  # disable vagrant-berkshelf
+    # use vagrant-omnibus
+    # issue https://github.com/opscode/vagrant-omnibus/issues/96
+    # override.omnibus.chef_version = :latest
+    override.omnibus.chef_version = "11.16.0"
+
+    # disable vagrant-berkshelf
     override.berkshelf.enabled = false
+
     override.vm.provision "chef_solo" do |chef|
       chef.custom_config_path = "Vagrantfile.chef"
       chef.cookbooks_path = ["cookbooks"]
