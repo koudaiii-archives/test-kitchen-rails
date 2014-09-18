@@ -45,6 +45,7 @@ namespace :deploy do
     task :directories do
       on release_roles :all do
         execute :sudo, :mkdir, '-pv', shared_path, releases_path, "#{shared_path}/config", "#{shared_path}/uploads", "#{shared_path}/jmaxml"
+        execute :sudo, :chown, '-R', "deploy:deploy", deploy_to
       end
     end
   end
@@ -70,7 +71,6 @@ namespace :deploy do
     end
   end
 
-  before :starting, 'deploy:fix_permissions'
   before :starting, 'deploy:upload'
   after :publishing, :restart
 

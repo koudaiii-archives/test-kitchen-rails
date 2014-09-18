@@ -20,10 +20,6 @@ if config != ''
       unless "127\.0\.0\.1" == match[1]
         host = match[1]
       end
-    elsif  match = /User (.*)/.match(line)
-      if host == "127\.0\.0\.1"
-        user = match[1]
-      end
     elsif match = /IdentityFile (.*)/.match(line)
       keys =  [match[1].gsub(/"/,'')]
     elsif match = /Port (.*)/.match(line)
