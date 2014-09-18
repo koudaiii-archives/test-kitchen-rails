@@ -64,13 +64,13 @@ end
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: "#{keys}",
-#    forward_agent: true,
-#    port: "#{port}",
-#    auth_methods: %w(publickey password),
-#    password: "#{default_password}"
-#  }
+set :ssh_options, {
+  keys: "#{keys}",
+  forward_agent: true,
+  port: "#{port}",
+  auth_methods: %w(publickey password),
+  password: "#{default_password}"
+}
 
 #
 # And/or per server (overrides global)

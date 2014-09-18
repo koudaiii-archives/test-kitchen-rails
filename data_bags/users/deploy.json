@@ -5,6 +5,6 @@
   "home" : "/home/deploy",
   "shell" : "/bin/bash",
   "password": "$1$wfbXL8LR$dV9P4VPRR.U1WgWs0zz3L0",
-  "ssh_keys": "",
+  "ssh_keys": "public_key",
   "system": false
 }
