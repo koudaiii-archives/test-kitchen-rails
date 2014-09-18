@@ -46,6 +46,7 @@ namespace :deploy do
       on release_roles :all do
         execute :sudo, :mkdir, '-pv', shared_path, releases_path, "#{shared_path}/config", "#{shared_path}/uploads", "#{shared_path}/jmaxml"
         execute :sudo, :chown, '-R', "deploy:deploy", deploy_to
+        upload!('config/database.yml', "#{shared_path}/config/database.yml")
       end
     end
   end
@@ -71,7 +72,6 @@ namespace :deploy do
     end
   end
 
-  before :starting, 'deploy:upload'
   after :publishing, :restart
 
 

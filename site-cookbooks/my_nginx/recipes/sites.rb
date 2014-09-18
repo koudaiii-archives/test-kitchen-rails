@@ -30,8 +30,8 @@ link "#{node['nginx']['dir']}/sites-enabled/app" do
 end
 
 directory "/var/www" do
-  owner 'deploy'
-  group 'deploy'
-  mode 0777
+  owner 'root'
+  group 'root'
+  mode 0755
   action :create
 end
