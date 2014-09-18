@@ -21,6 +21,7 @@ data_ids.each do |id|
   directory "#{u['home']}/.ssh" do
     owner u['username']
     group u['username']
+    action :create
   end
 
   # authorized_keysファイルを作ります
