@@ -8,6 +8,14 @@
 #
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+
+<%
+socket = ["/tmp/mysqld.sock",
+          "/tmp/mysql.sock",
+          "/var/run/mysqld/mysqld.sock",
+          "/var/lib/mysql/mysql.sock"].detect{|socket| File.exist?(socket)}
+%>
+
 development:
   adapter: mysql2
   encoding: utf8
@@ -16,7 +24,7 @@ development:
   username: root
   password: password
   host: 127.0.0.1
-  socket: /var/lib/mysql/mysql.sock
+  socket: <%= socket %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -29,7 +37,7 @@ test:
   username: root
   password: password
   host: 127.0.0.1
-  socket: /var/lib/mysql/mysql.sock
+  socket: <%= socket %>
 
 production:
   adapter: mysql2
@@ -38,4 +46,4 @@ production:
   pool: 5
   username: root
   password: password
-  socket: /var/lib/mysql/mysql.sock
+  socket: <%= socket %>
