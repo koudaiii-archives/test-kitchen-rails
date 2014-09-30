@@ -259,6 +259,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rbenv
   capistrano3-puma!
+  chef-zero
   dotenv
   kitchen-digitalocean
   kitchen-ec2

@@ -9,6 +9,9 @@ gem 'dotenv'
 gem 'knife-solo'
 gem 'berkshelf'
 
+# Use chef-zero
+gem 'chef-zero'
+
 # Use test-kitchen
 gem 'test-kitchen'
 gem 'kitchen-vagrant'
