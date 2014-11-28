@@ -3,7 +3,7 @@ default['my_mysql']['server_root_password'] = 'password'
 default['my_mysql']['server_debian_password'] = 'password'
 default['my_mysql']['data_dir'] = '/var/lib/mysql'
 default['my_mysql']['port'] = '3306'
-default['my_mysql']['version'] = '5.5'
+default['my_mysql']['version'] = '5.6'
 
 ### used in grants.sql
 #default['my_mysql']['allow_remote_root'] = true
