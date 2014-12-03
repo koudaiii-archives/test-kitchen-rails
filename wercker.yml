@@ -3,12 +3,12 @@ no-response-timeout: 225
 build:
   steps:
     # Execute the bundle install step, a step provided by wercker
-    - bundle-install
     - script:
         name: install libxml2 
         code: |
               sudo apt-get update -y
               sudo apt-get install libxml2
+    - bundle-install
     - script:
         name: Make $HOME/.ssh directory
         code: mkdir -p $HOME/.ssh
