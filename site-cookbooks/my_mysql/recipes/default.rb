@@ -18,7 +18,7 @@
 #node.set['mysql']['root_network_acl']       = "#{node['my_mysql']['root_network_acl']}"
 
 mysql_service 'default' do
-#  version   "#{node['my_mysql']['version']}"
+  version   "#{node['my_mysql']['version']}"
   package_version node['mysql']['server_package_version']
   port      "#{node['my_mysql']['port']}"
   data_dir  "#{node['my_mysql']['data_dir']}"
