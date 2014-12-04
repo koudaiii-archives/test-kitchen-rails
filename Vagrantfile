@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     override.ssh.pty       = true
 
     provider.token = ENV["DIGITALOCEAN_TOKEN"]
-    provider.image = 'Ubuntu 14.04 x64'
+    provider.image = 'ubuntu-14-04-x64'
     provider.region = 'nyc2'
     provider.size = '512mb'
 
