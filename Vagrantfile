@@ -23,7 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     provider.token = ENV["DIGITALOCEAN_TOKEN"]
     provider.image = 'ubuntu-14-04-x64'
-    provider.region = 'nyc2'
+    provider.region = 'nyc3'
     provider.size = '512mb'
 
     if ENV['WERCKER'] == "true"
