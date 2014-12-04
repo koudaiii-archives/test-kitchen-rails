@@ -36,7 +36,7 @@ end
 #  supports :status => true, :restart => true, :reload => true
 #end
 
-
+include_recipe 'mysql::server'
 include_recipe 'mysql::client'
 
 #template '/etc/mysql/conf.d/mysite.cnf' do
