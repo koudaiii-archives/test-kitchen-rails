@@ -8,3 +8,11 @@
 #
 
 include_recipe "postfix"
+
+template "main.cf" do
+  source "main.cf.erb"
+  path "/etc/postfix/main.cf"
+  mode 0644
+  owner "root"
+  group "root"
+end
