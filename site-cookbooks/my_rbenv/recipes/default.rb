@@ -13,11 +13,6 @@
 end
 
 case node[:platform]
-when "ubuntu", "debian"
-  include_recipe "apt"
-end
-
-case node[:platform]
 when "redhat", "centos", "amazon", "oracle"
   package "curl-devel"
   package "sqlite-devel"

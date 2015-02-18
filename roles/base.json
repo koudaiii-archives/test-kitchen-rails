@@ -3,8 +3,6 @@
   "chef_type" : "role",
   "json_class" : "Chef::Role",
   "run_list" : [
-    "recipe[apt]",
-    "recipe[yum-epel]",
     "recipe[login_users]",
     "recipe[my_repo]",
     "recipe[my_locale]",

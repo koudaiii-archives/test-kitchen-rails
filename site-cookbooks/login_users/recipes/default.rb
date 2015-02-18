@@ -48,3 +48,11 @@ data_ids.each do |id|
 end
 
 include_recipe 'sudo'
+
+case node[:platform]
+when "ubuntu", "debian"
+  include_recipe "apt"
+when "redhat", "centos", "amazon", "oracle"
+  include_recipe 'yum-epel'
+end
+

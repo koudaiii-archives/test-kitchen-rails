@@ -3,13 +3,13 @@ require 'spec_helper'
 # rbenv install
 describe command('rbenv -v') do
   let(:path){ '/usr/local/rbenv/bin' }
-  it { should return_stdout /^rbenv*/ }
+  its(:stdout) { should eq /^rbenv*/ }
 end
 
 # ruby versions
 describe command('ruby -v') do
   let(:path) { '/usr/local/rbenv/shims' }
-  it { should return_stdout /ruby 2\.1\.2*/ }
+  its(:stdout) { should eq /ruby 2\.1\.2*/ }
 end
 
 # for gem packages
