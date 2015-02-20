@@ -9,6 +9,8 @@
 
 include_recipe "postfix"
 
+package "mailx"
+
 template "main.cf" do
   source "main.cf.erb"
   path "/etc/postfix/main.cf"
