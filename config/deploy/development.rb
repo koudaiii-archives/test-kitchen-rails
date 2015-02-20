@@ -7,28 +7,28 @@
 set :rails_env, 'production'
 
 host = "192.168.33.10"
-user = "deploy"
-keys = ""
+user = "root"
+keys = "/User/koudaiii/.ssh/id_rsa"
 port = "22"
-default_password = "password"
+default_password = "vagrant"
 
-config = `vagrant ssh-config default`
-
-if config != ''
-  config.each_line do |line|
-    if match = /HostName (.*)/.match(line)
-      unless "127\.0\.0\.1" == match[1]
-        host = match[1]
-      end
-    elsif match = /IdentityFile (.*)/.match(line)
-      keys =  [match[1].gsub(/"/,'')]
-    elsif match = /Port (.*)/.match(line)
-      if host == "127\.0\.0\.1"
-        port = match[1]
-      end
-    end
-  end
-end
+#config = `vagrant ssh-config default`
+#
+#if config != ''
+#  config.each_line do |line|
+#    if match = /HostName (.*)/.match(line)
+#      unless "127\.0\.0\.1" == match[1]
+#        host = match[1]
+#      end
+#    elsif match = /IdentityFile (.*)/.match(line)
+#      keys =  [match[1].gsub(/"/,'')]
+#    elsif match = /Port (.*)/.match(line)
+#      if host == "127\.0\.0\.1"
+#        port = match[1]
+#      end
+#    end
+#  end
+#end
 
 ssh_login = "#{user}"+ "@" + "#{host}"
 
@@ -48,7 +48,7 @@ server "#{host}", user: "#{user}", roles: %w{web app db}, my_property: :my_value
 namespace :db do
   task :db_create do
     on roles(:db) do |host|
-      execute "mysql -uroot -ppassword -e 'CREATE DATABASE IF NOT EXISTS app_production;'"
+      execute :sudo,"mysql -uroot -ppassword -e 'CREATE DATABASE IF NOT EXISTS app_production;'"
     end
   end
 end
@@ -61,8 +61,9 @@ end
 # Global options
 # --------------
 set :ssh_options, {
-  keys: "#{keys}",
-  forward_agent: true,
+  user: "#{user}",
+  keys: %w("#{keys}"),
+  forward_agent: false,
   port: "#{port}",
   auth_methods: %w(publickey password),
   password: "#{default_password}"

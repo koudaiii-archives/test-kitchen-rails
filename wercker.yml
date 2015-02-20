@@ -50,10 +50,10 @@ build:
         code: vagrant up --provider=digital_ocean
     - script:
         name: Create DataBase
-        code: bundle exec cap development db:db_create
+        code: bundle exec cap staging db:db_create
     - script:
         name: Deploy
-        code: bundle exec cap development deploy
+        code: bundle exec cap staging deploy
     - script:
         name: Run rake spec
         code: bundle exec rake spec

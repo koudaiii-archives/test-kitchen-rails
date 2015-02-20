@@ -4,7 +4,7 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 host = ""
-user = "vagrant"
+user = ""
 keys = ""
 port = ""
 
@@ -14,7 +14,7 @@ if config != ''
     if match = /HostName (.*)/.match(line)
       host = match[1]
     elsif  match = /User (.*)/.match(line)
-#      user = match[1]
+      user = match[1]
     elsif match = /IdentityFile (.*)/.match(line)
       keys =  [match[1].gsub(/"/,'')]
     elsif match = /Port (.*)/.match(line)
@@ -48,7 +48,6 @@ server "#{host}", user: 'root', roles: %w{web app db}, my_property: :my_value
 # --------------
   set :ssh_options, {
     keys: "#{keys}",
-    #keys: %w(/home/rlisowski/.ssh/id_rsa),
     forward_agent: false,
     auth_methods: %w(password)
   }
