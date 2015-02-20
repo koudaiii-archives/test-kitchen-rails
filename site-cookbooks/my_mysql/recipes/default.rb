@@ -6,13 +6,18 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+case node[:platform]
+when "redhat", "centos", "amazon", "oracle"
+when "ubuntu", "debian"
+  include_recipe 'apt::default'
+end
 
 mysql_service 'default' do
   version   "#{node['my_mysql']['version']}"
   port      "#{node['my_mysql']['port']}"
   data_dir  "#{node['my_mysql']['data_dir']}"
   initial_root_password "#{node['my_mysql']['server_root_password']}"
-  action :create
+  action [:create, :start]
 end
 
 mysql_client 'default' do

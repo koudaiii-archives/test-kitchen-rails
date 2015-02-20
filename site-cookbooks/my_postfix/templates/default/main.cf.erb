@@ -7,8 +7,8 @@ queue_directory = /var/spool/postfix
 command_directory = /usr/sbin
 data_directory = /var/lib/postfix
 mail_owner = postfix
-myhostname = node['hostname']
-mydomain = node['hostname']
+myhostname = <%= node['hostname'] %>
+mydomain = <%= node['hostname'] %>
 inet_interfaces =  127.0.0.1
 inet_protocols = all
 mydestination = $myhostname, localhost.$mydomain, localhost
