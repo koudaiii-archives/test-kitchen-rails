@@ -8,11 +8,14 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  #config.vm.box = "ubuntu/trusty64"
-  config.vm.box = "opscode-centos-6.5"
-  config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box"
+  config.vm.box = "ubuntu/trusty64"
+  #config.vm.box = "opscode-centos-6.5"
+  #config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box"
   #config.ssh.max_tries = 40
   #config.ssh.timeout   = 120
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+  end
 
   config.vm.network "private_network", ip: "192.168.33.10"
   config.vm.provider :digital_ocean do |provider, override|
@@ -27,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #    provider.image = 'ubuntu-14-10-x64'
     provider.image = 'centos-6-5-x64'
     provider.region = 'nyc3'
-    provider.size = '512mb'
+    provider.size = '1GB'
 
     if ENV['WERCKER'] == "true"
       provider.ssh_key_name = "wercker chef"

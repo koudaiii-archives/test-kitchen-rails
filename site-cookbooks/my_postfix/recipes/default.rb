@@ -9,7 +9,11 @@
 
 include_recipe "postfix"
 
-package "mailx"
+case node[:platform]
+when "redhat", "centos", "amazon", "oracle"
+  package "mailx"
+when "ubuntu"
+end
 
 template "main.cf" do
   source "main.cf.erb"
