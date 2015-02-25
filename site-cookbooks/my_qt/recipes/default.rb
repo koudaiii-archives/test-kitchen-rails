@@ -16,9 +16,16 @@ case node[:platform]
 when "redhat", "centos", "amazon", "oracle"
   package "qt-devel"
 
-  template '/etc/yum.repos.d/qt48.repo' do
-    source 'qt48.repo.erb'
+  remote_file "/etc/yum.repos.d/qt48.repo" do
+    source node["my_qt"]["download_url"]
+    user "root"
+    mode "0755"
+    not_if { File.exist?("/etc/yum.repos.d/qt48.repo") }
   end
+
+  #template '/etc/yum.repos.d/qt48.repo' do
+  #  source 'qt48.repo.erb'
+  #end
 
   execute "yum-update" do
     user "root"
