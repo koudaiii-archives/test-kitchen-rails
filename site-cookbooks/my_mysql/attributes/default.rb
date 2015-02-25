@@ -4,11 +4,12 @@ default['my_mysql']['server_root_password'] = 'password'
 default['my_mysql']['server_debian_password'] = 'password'
 default['my_mysql']['data_dir'] = '/var/lib/mysql'
 default['my_mysql']['port'] = '3306'
-default['my_mysql']['socket'] = '/var/lib/mysql/mysql.sock'
 if node["platform"] == "ubuntu"
   default['my_mysql']['server_package_version'] = '5.6.19-0ubuntu0.14.04.1'
+  default['my_mysql']['socket'] = '/var/run/mysqld/mysqld.sock'
   default['my_mysql']['version'] = '5.6'
 else
+  default['my_mysql']['socket'] = '/var/lib/mysql/mysql.sock'
   default['my_mysql']['version'] = '5.6'
 end
 ### used in grants.sql

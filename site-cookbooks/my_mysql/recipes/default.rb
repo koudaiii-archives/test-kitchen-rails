@@ -23,6 +23,10 @@ when "ubuntu", "debian"
   mysql_service 'default' do
     package_version "#{node['my_mysql']['server_package_version']}"
     version   "#{node['my_mysql']['version']}"
+    port      "#{node['my_mysql']['port']}"
+    data_dir  "#{node['my_mysql']['data_dir']}"
+    initial_root_password "#{node['my_mysql']['server_root_password']}"
+    socket    "#{node['my_mysql']['socket']}"
     action [:create, :start]
   end
 end
